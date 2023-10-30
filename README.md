@@ -5,11 +5,11 @@ This app is ideal for goal setters, fitness enthusiasts, students, and busy prof
 
 	
 Features of the app:-
-1	Creation of Routines
-2	Notifications / reminders
-3	Goal's setting and customizing
-4	Real time progress tracking and rewards
-5	Custom Language, fonts and profile picture.
+1. Creation of Routines
+2. Notifications / reminders
+3. Goal's setting and customizing
+4. Real time progress tracking and rewards
+5.Custom Language, fonts and profile picture.
 
 UI FLow/ UI Mock: https://drive.google.com/file/d/1ajm3pOi1AAP3RftERKyMPoX1CegjiD5s/view?usp=sharing
 

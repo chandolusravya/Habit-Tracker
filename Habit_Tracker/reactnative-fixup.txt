@@ -1,0 +1,51 @@
+
+*******
+This script MAY help you. You *should* have run "npx react-native doctor"
+and fixed the issues first. This may help you with issues there if you can't figure out why doctor is failing.
+      
+BUT DO NOT try to run-android without BOTH "doctor" and this script reporting success.
+      
+Note that "WARN:" does not mean "Error", it means "be sure this is correct."
+*********** 
+      
+            
+INFO: Detected version  "20.0.2"  of Java.
+INFO: Correct version of java installed.
+WARN: Expecting version ^0.2.9 of @react-native-masked-view/masked-view but found ^0.3.0
+WARN: Expecting version ^6.6.4 of @react-navigation/drawer but found ^6.6.6
+WARN: Expecting version ^6.1.8 of @react-navigation/native but found ^6.1.9
+WARN: Expecting version ^6.9.14 of @react-navigation/native-stack but found ^6.9.17
+WARN: Expecting version ^6.3.18 of @react-navigation/stack but found ^6.3.20
+WARN: Expecting version 0.72.5 of react-native but found 0.72.6
+WARN: Expecting version ^2.13.1 of react-native-gesture-handler but found ^2.13.4
+WARN: Expecting version ^4.7.2 of react-native-safe-area-context but found ^4.7.4
+WARN: Expecting version ^3.25.0 of react-native-screens but found ^3.27.0
+INFO: package.json file adjusted successfully.
+INFO: App.tsx removed and App.js created.
+INFO: .prettierrc file created.
+INFO: org.gradle.java.home added or updated in gradle.properties.
+INFO: gradle.properties file updated successfully.
+INFO: android\universal.json file created with contents.
+INFO: Gradle wrapper distributionUrl updated successfully.
+INFO: Build.gradle file updated successfully.
+INFO: gradle.properties file updated successfully.
+INFO: Keystore generated successfully.
+
+INFO: Be sure to: 
+1. npm install
+2a. git init
+2b. git add .
+2c. git commit -m"initial version"
+
+Once this is done, you can either/both:
+
+[to run on simulator or connected device]
+
+$ npx react-native run-android
+
+[to build an APK]
+
+$ cd android && .\gradlew build && .\gradlew bundleRelease
+$ java -jar "C:\Program Files\bundletool-all-1.15.4.jar" build-apks --bundle=app\build\outputs\bundle\release\app-release.aab --output=app\build\outputs\apk\release\app-release.apks --mode=universal --ks=..\android/app/my-release-key.jks --ks-pass=pass:12345678 --ks-key-alias=my-key-alias --key-pass=pass:12345678
+
+$ java -jar "C:\Program Files\bundletool-all-1.15.4.jar" extract-apks --apks=app\build\outputs\apk\release\app-release.apks --output-dir=app\build\outputs\apk\release\ --device-spec=..\android\universal.json

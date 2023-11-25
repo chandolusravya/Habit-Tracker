@@ -1,0 +1,94 @@
+INFO: 
+*******
+This script MAY help you. You *should* have run "npx react-native doctor"
+and fixed the issues first. This may help you with issues there if you can't figure out why doctor is failing.
+
+BUT DO NOT try to run-android without BOTH "doctor" and this script reporting success.
+
+Note that "WARN:" does not mean "Error", it means "be sure this is correct."
+
+All output from this script will be logged to reactnative-fixup.txt
+***********
+
+
+INFO: Script is current version (1.4.1) [651]
+INFO: (Skipping show_newest_script_version) [1364]
+INFO: Found npm. [670]
+INFO: JAVA_HOME is set to C:\Program Files\Java\jdk-20 [685]
+INFO: JAVA_HOME points to an existing directory. [689]
+INFO: java is in your path. [699]
+INFO: Detected version "20.0.2" of Java. [722]
+INFO: Java version is correct. [726]
+INFO: java executable location matches up with JAVA_HOME. [743]
+INFO: Environment var(s) point to an Android SDK location C:\Users\sravyach\AppData\Local\Android\Sdk. [760]
+INFO: Android SDK appears to exist. [764]
+INFO: SDK and JDK paths appear to be good. [802]
+INFO: (homebrew is not required on Windows) [809]
+FATAL: This project is NOT under git management (!) [834]
+vvvvvv HOW TO FIX vvvvvv
+$ git init
+$ git add .
+$ git commit -m'Initial commit'
+^^^^^^ HOW TO FIX ^^^^^
+INFO: We are in an NPM project. [841]
+INFO: We are really in a React-native project. [865]
+INFO: Confirmed: this is a CLI project. [876]
+INFO: Confirmed: this is not an expo rebuild/exported project. [887]
+INFO: (Cocoapods is not required on Windows.) [895]
+INFO: (xcode-select is not required on Windows.) [910]
+INFO: (Watchman is not required on Windows.) [928]
+INFO: (ios-deploy is not required on Windows.) [943]
+INFO: Found adb. [958]
+INFO: keytool is in path. [969]
+INFO: Found emulator. [980]
+INFO: bundletool destination folder of C:\Program Files\ exists. [994]
+INFO: Found current version of bundletool. [997]
+INFO: Checking [newest published] npm package versions... [1013]
+WARN: Expecting version ^2.13.4 of react-native-gesture-handler but found ^2.14.0 [1021]
+INFO: (Tell BJM or write an issue against this script on GitHub) [1028]
+INFO: ...Done checking npm package versions. [1030]
+INFO: Command-line tools are in path. [1036]
+INFO: Correct NDK is installed. [1044]
+INFO: Android SDK build-tools version 30.0.3 exists. [1056]
+INFO: Android SDK build-tools version 33.0.0 exists. [1056]
+INFO: Android SDK build-tools version 34.0.0 exists. [1056]
+INFO: (All build-tools versions exist) [1064]
+INFO: (JAVA_VERSION is not needed for Windows) [1074]
+INFO: Skipping add_kotlin_version_to_build_gradle ('modification' filtered out; previous test failure) [1368]
+INFO: Skipping add_signing_config_to_app_build_gradle ('modification' filtered out; previous test failure) [1368]
+INFO: Skipping add_keys_to_gradle_properties ('modification' filtered out; previous test failure) [1368]
+INFO: Skipping modify_gradle_properties_release_section ('modification' filtered out; previous test failure) [1368]
+INFO: Skipping modify_gradle_wrapper_distribution_url ('modification' filtered out; previous test failure) [1368]
+INFO: Skipping add_gradle_java_home ('modification' filtered out; previous test failure) [1368]
+INFO: Skipping add_universal_json_file ('modification' filtered out; previous test failure) [1368]
+INFO: Skipping remove_tsx_and_create_app_js ('modification' filtered out; previous test failure) [1368]
+INFO: Skipping modify_package_json_dependencies ('modification' filtered out; previous test failure) [1368]
+INFO: Skipping create_assets_config ('modification' filtered out; previous test failure) [1368]
+INFO: Skipping create_keystore ('modification' filtered out; previous test failure) [1368]
+INFO: Skipping create_prettierrc ('modification' filtered out; previous test failure) [1368]
+INFO: Be sure to:
+
+
+$ npm install
+$ npx react-native-asset
+
+*FOR IOS Before* your first build (or after you install a new NPM package) you must:
+
+$ sudo gem update cocoapods --pre
+$ npx pod-install
+$ cd ios && pod update && cd ..
+
+$ npx react-native run-android *(or)* run-ios
+
+[to build an APK]
+
+$ npx react-native-asset
+
+$ cd android && .\gradlew build && .\gradlew bundleRelease
+$ java -jar "C:\Program Files\bundletool-all-1.15.6.jar" build-apks --bundle=app\build\outputs\bundle\release\app-release.aab --output=app\build\outputs\apk\release\app-release.apks --mode=universal --ks=..\android/app/my-release-key.jks --ks-pass=pass:12345678 --ks-key-alias=my-key-alias --key-pass=pass:12345678
+
+$ java -jar "C:\Program Files\bundletool-all-1.15.6.jar" extract-apks --apks=app\build\outputs\apk\release\app-release.apks --output-dir=app\build\outputs\apk\release\ --device-spec=..\android\universal.json
+
+
+
+*** (1.4.1) Message type counts: 1 fatal, 1 warn, 0 error, 50 info, 1 fixes

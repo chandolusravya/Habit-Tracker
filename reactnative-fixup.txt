@@ -1,16 +1,3 @@
-INFO: 
-*******
-This script MAY help you. You *should* have run "npx react-native doctor"
-and fixed the issues first. This may help you with issues there if you can't figure out why doctor is failing.
-
-BUT DO NOT try to run-android without BOTH "doctor" and this script reporting success.
-
-Note that "WARN:" does not mean "Error", it means "be sure this is correct."
-
-All output from this script will be logged to reactnative-fixup.txt
-***********
-
-
 INFO: Script is current version (1.4.1) [651]
 INFO: (Skipping show_newest_script_version) [1364]
 INFO: Found npm. [670]
@@ -24,12 +11,7 @@ INFO: Environment var(s) point to an Android SDK location C:\Users\sravyach\AppD
 INFO: Android SDK appears to exist. [764]
 INFO: SDK and JDK paths appear to be good. [802]
 INFO: (homebrew is not required on Windows) [809]
-FATAL: This project is NOT under git management (!) [834]
-vvvvvv HOW TO FIX vvvvvv
-$ git init
-$ git add .
-$ git commit -m'Initial commit'
-^^^^^^ HOW TO FIX ^^^^^
+INFO: Project is git-controlled. [826]
 INFO: We are in an NPM project. [841]
 INFO: We are really in a React-native project. [865]
 INFO: Confirmed: this is a CLI project. [876]
@@ -54,41 +36,30 @@ INFO: Android SDK build-tools version 33.0.0 exists. [1056]
 INFO: Android SDK build-tools version 34.0.0 exists. [1056]
 INFO: (All build-tools versions exist) [1064]
 INFO: (JAVA_VERSION is not needed for Windows) [1074]
-INFO: Skipping add_kotlin_version_to_build_gradle ('modification' filtered out; previous test failure) [1368]
-INFO: Skipping add_signing_config_to_app_build_gradle ('modification' filtered out; previous test failure) [1368]
-INFO: Skipping add_keys_to_gradle_properties ('modification' filtered out; previous test failure) [1368]
-INFO: Skipping modify_gradle_properties_release_section ('modification' filtered out; previous test failure) [1368]
-INFO: Skipping modify_gradle_wrapper_distribution_url ('modification' filtered out; previous test failure) [1368]
-INFO: Skipping add_gradle_java_home ('modification' filtered out; previous test failure) [1368]
-INFO: Skipping add_universal_json_file ('modification' filtered out; previous test failure) [1368]
-INFO: Skipping remove_tsx_and_create_app_js ('modification' filtered out; previous test failure) [1368]
-INFO: Skipping modify_package_json_dependencies ('modification' filtered out; previous test failure) [1368]
-INFO: Skipping create_assets_config ('modification' filtered out; previous test failure) [1368]
-INFO: Skipping create_keystore ('modification' filtered out; previous test failure) [1368]
-INFO: Skipping create_prettierrc ('modification' filtered out; previous test failure) [1368]
-INFO: Be sure to:
-
-
-$ npm install
-$ npx react-native-asset
-
-*FOR IOS Before* your first build (or after you install a new NPM package) you must:
-
-$ sudo gem update cocoapods --pre
-$ npx pod-install
-$ cd ios && pod update && cd ..
-
-$ npx react-native run-android *(or)* run-ios
-
-[to build an APK]
-
-$ npx react-native-asset
-
-$ cd android && .\gradlew build && .\gradlew bundleRelease
-$ java -jar "C:\Program Files\bundletool-all-1.15.6.jar" build-apks --bundle=app\build\outputs\bundle\release\app-release.aab --output=app\build\outputs\apk\release\app-release.apks --mode=universal --ks=..\android/app/my-release-key.jks --ks-pass=pass:12345678 --ks-key-alias=my-key-alias --key-pass=pass:12345678
-
-$ java -jar "C:\Program Files\bundletool-all-1.15.6.jar" extract-apks --apks=app\build\outputs\apk\release\app-release.apks --output-dir=app\build\outputs\apk\release\ --device-spec=..\android\universal.json
-
-
-
-*** (1.4.1) Message type counts: 1 fatal, 1 warn, 0 error, 50 info, 1 fixes
+INFO: build.gradle file updated successfully with kotlinVersion 1.7.10. [1113]
+INFO: app/build.gradle file updated successfully with signingConfigs. [1135]
+INFO: gradle.properties file updated successfully with keys. [1152]
+INFO: gradle.properties file updated successfully with release section. [1172]
+INFO: Gradle wrapper distributionUrl updated successfully. [1188]
+INFO: org.gradle.java.home added or updated in gradle.properties. [1212]
+INFO: android\universal.json file already exists. (not modifying it) [1218]
+INFO: App.js exists and has not been modified. [1242]
+INFO: @react-native-masked-view/masked-view (^0.3.0) is present and up to date [1277]
+INFO: @react-navigation/drawer (^6.6.6) is present and up to date [1277]
+INFO: @react-navigation/native (^6.1.9) is present and up to date [1277]
+INFO: @react-navigation/native-stack (^6.9.17) is present and up to date [1277]
+INFO: @react-navigation/stack (^6.3.20) is present and up to date [1277]
+INFO: react-native-asset (^2.1.1) is present and up to date [1277]
+INFO: react (18.2.0) is present and up to date [1277]
+INFO: react-native (0.72.7) is present and up to date [1277]
+INFO: react-native-gesture-handler (^2.13.4) is present and up to date [1277]
+INFO: react-native-reanimated (^3.5.4) is present and up to date [1277]
+INFO: react-native-safe-area-context (^4.7.4) is present and up to date [1277]
+INFO: react-native-screens (^3.27.0) is present and up to date [1277]
+INFO: No package.json dependencies changed. [1284]
+INFO: assets/fonts dir exists already [1309]
+INFO: assets/audio dir exists already [1316]
+INFO: react-native.config.js exists already; not overwritten [1323]
+INFO: Keystore already exists. (not overwriting it) [1337]
+INFO: Found existing .prettierrc or .prettierrc.js, so not modifying it. [1349]
+*** (1.4.1) Message type counts: 0 fatal, 1 warn, 0 error, 63 info, 0 fixes

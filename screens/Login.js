@@ -1,6 +1,7 @@
-import { View, Text, Image, Pressable, TextInput, TouchableOpacity } from 'react-native'
+import { View, Text, Image, Pressable, TextInput, TouchableOpacity, Button } from 'react-native'
 import React, { useState } from 'react'
-//import CheckBox from '@react-native-community/checkbox';
+import CheckBox from '@react-native-community/checkbox';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 //import COLORS from '../constants/Colors';
 import { Ionicons } from 'react-native-vector-icons';
@@ -10,6 +11,35 @@ import { Ionicons } from 'react-native-vector-icons';
 export default Login = ({ navigation }) => {
     const [isPasswordShown, setIsPasswordShown] = useState(false);
     const [isChecked, setIsChecked] = useState(false);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleLogin = async () => {
+        try {
+          // Retrieve user data from AsyncStorage
+            const userDataString = await AsyncStorage.getItem(email);
+            console.log('Stored User Data:', userDataString);
+    
+            if (userDataString) {
+            // User found, check the password
+            const userData = JSON.parse(userDataString);
+            if (userData.password === password) {
+              // Password is correct, navigate to the welcome screen or any other screen
+                navigation.navigate('Welcome');
+            } else {
+              // Incorrect password
+                alert('Incorrect password. Please try again.');
+            }
+            } else {
+            // User not found
+            alert('No user found with the provided email address.');
+            }
+            } catch (error) {
+            console.error('Error logging in:', error);
+            alert('An error occurred while logging in.');
+        }
+    };
+    
 
     return (
         <View style={{ flex: 1, marginHorizontal: 22 }}>
@@ -50,6 +80,8 @@ export default Login = ({ navigation }) => {
                             placeholder='Enter your email address'
                             placeholderTextColor={"black"}
                             keyboardType='email-address'
+                            onChangeText={setEmail}
+                            value={email}
                             style={{
                                 width: "100%"
                             }}
@@ -58,33 +90,7 @@ export default Login = ({ navigation }) => {
                 </View>
             </View>
         
-            <View style={{ marginBottom: 12 }}>
-                <Text style={{
-                    fontSize: 16,
-                    fontWeight: 400,
-                    marginVertical: 8
-                }}>Email address</Text>
-
-                <View style={{
-                    width: "100%",
-                    height: 48,
-                    borderColor: "black",
-                    borderWidth: 1,
-                    borderRadius: 8,
-                    alignItems: "center",
-                    justifyContent: "center",
-                    paddingLeft: 22
-                }}>
-                    <TextInput
-                        placeholder='Enter your email address'
-                        placeholderTextColor={"black"}
-                        keyboardType='email-address'
-                        style={{
-                            width: "100%"
-                        }}
-                    />
-                </View>
-            </View>
+            
         
 
             <View style={{ marginBottom: 12 }}>
@@ -108,6 +114,8 @@ export default Login = ({ navigation }) => {
                         placeholder='Enter your password'
                         placeholderTextColor={"black"}
                         secureTextEntry={isPasswordShown}
+                        onChangeText={setPassword}
+                        value={password}
                         style={{
                             width: "100%"
                         }}
@@ -121,38 +129,48 @@ export default Login = ({ navigation }) => {
                             right: 12
                         }}
                     >
-                        {
-                            isPasswordShown? (
-                                
-                                <Text> EYE </Text>
-                            ) : (
-                                <Text>NEYE</Text>
-                            )
-                        }
+                        
+                        <Text>{isPasswordShown ? 'Hide' : 'Show'}</Text>
+                        
 
                     </TouchableOpacity>
                 </View>
             </View>
 
             <View style={{ flexDirection: 'row', marginVertical: 6 }}>
-                {/* <CheckBox
+                <CheckBox
                     style={{ marginRight: 8 }}
                     value={isChecked}
                     onValueChange={() => setIsChecked(!isChecked)}
-                    tintColors={{ true: "red", false: "black" }}
-                /> */}
+                    tintColors={{ true: "green", false: "black" }}
+                /> 
 
-                <Text>Remember Me</Text>
+                <Text style={{marginVertical : 8, fontSize : 16}}>Remember Me</Text>
             </View>
 
             {/* <Button
                     title="Login"
                     filled
+                    onPress={() => navigation.navigate("Welcome")}
                     style={{
                         marginTop: 18,
                         marginBottom: 4,
                     }}
-                /> */}
+                />  */}
+            
+                <TouchableOpacity
+        onPress={handleLogin}
+        style={{
+            marginTop: 18,
+            marginBottom: 4,
+            backgroundColor: '#5359D1',
+            padding: 12,
+            borderRadius: 8,
+            alignItems: 'center'
+        }}
+    >
+        <Text style={{ color: 'white', fontSize: 16 }}>Login</Text>
+        </TouchableOpacity>
 
             <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 20 }}>
                 <View

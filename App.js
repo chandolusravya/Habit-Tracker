@@ -5,6 +5,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Login  from "./screens/Login";
 import Signup from "./screens/Signup";
 import Welcome from "./screens/Welcome";
+import HomeScreen from './screens/HomeScreen';
+import AddHabitScreen from './screens/AddHabitScreen';
+//import EditHabitScreen from './screens/EditHabitScreen';
+import AppStack from './screens/AppStack';
 
 
 import {View, Text, Button} from 'react-native';
@@ -29,41 +33,63 @@ const Stack = createStackNavigator();
 
 export default function App() {
   
-  return (
+    return (
     <NavigationContainer>
-      <Stack.Navigator
+        <Stack.Navigator
         initialRouteName='Welcome'
-      >
+        >
         <Stack.Screen
-          name="Welcome"
-          component={Welcome}
-          options={{
+            name="Welcome"
+            component={Welcome}
+            options={{
             headerShown: false
-          }}
+            }}
         />
         <Stack.Screen
-          name="Login"
-          component={Login}
-          options={{
+            name="Login"
+            component={Login}
+            options={{
             headerShown: false
-          }}
+            }}
         />
         <Stack.Screen
-          name="Signup"
-          component={Signup}
-          options={{
+            name="Signup"
+            component={Signup}
+            options={{
             headerShown: false
-          }}
+            }}
+        />
+        <Stack.Screen
+            name="HomeScreen"
+            component={HomeScreen}
+            options={{
+            headerShown: false
+            }}
+        /> 
+        <Stack.Screen
+            name="AddHabitScreen"
+            component={AddHabitScreen}
+            options={{
+            headerShown: false
+            }}
         />
         {/* <Stack.Screen
-          name="Home"
-          component={Home}
-          options={{
+            name="EditHabitScreen"
+            component={EditHabitScreen}
+            options={{
             headerShown: false
-          }}
+            }}
         />  */}
+        <Stack.Screen
+            name="AppStack"
+            component={AppStack}
+            options={{
+            headerShown: false
+            }}
+        />
         
-      </Stack.Navigator>
+        
+        </Stack.Navigator>
     </NavigationContainer>
-  );
+    );
 }

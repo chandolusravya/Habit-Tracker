@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import CheckBox from '@react-native-community/checkbox';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+
 //import COLORS from '../constants/Colors';
 import { Ionicons } from 'react-native-vector-icons';
 
@@ -25,7 +26,7 @@ export default Login = ({ navigation }) => {
             const userData = JSON.parse(userDataString);
             if (userData.password === password) {
               // Password is correct, navigate to the welcome screen or any other screen
-                navigation.navigate('Welcome');
+                navigation.navigate('HomeScreen');
             } else {
               // Incorrect password
                 alert('Incorrect password. Please try again.');

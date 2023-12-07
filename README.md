@@ -19,4 +19,25 @@ UserFlow:
 3. When clicked on "create a routine" button, user is taken to a Create Page, where they can create their own routine by setting goals according to their preference.
 4. If user clicks on "Routine" button, he/she will be navigated to Routine List Page which conatins all the routines created/saved by default that can be used without creating a new one.
 5. User can access their progress report from home screen which will show their achievements and rewards.
-	6. Users can also change the fonts, language and update their profile picture from settings page.
+6. Users can also change the fonts, language and update their profile picture from settings page.
+
+For this code to work, Install:
+1. Android Studio (for emulator)
+2. SDK
+3. JDK (JAVA)
+4. Node.js
+5. BundleTool
+6. Chocolatey
+7. VSCode (editor)
+
+Instructions to run code:
+1. $ npx react-native@latest init app_name
+2. $ python ./reactnative-setup.py $ python somewhere/reactnative-setup.py  ( clone https://github.com/bjmckenz/rn-cli-fixup.git in your home directory before this step for reactnative-setup.py)
+...Output: does things. leaves copy of messages in **reactnative-fixup.txt**
+3. $ npx react-native doctor <--- at least once, verify it is ALL GREEN
+4. To run:
+   $ npx react-native run-android
+6. To Build apk file:
+   cd android ; .\gradlew build ; .\gradlew bundleRelease
+7. $ java -jar "C:\Program Files\bundletool-all-1.15.6.jar" build-apks --bundle=app\build\outputs\bundle\release\app-release.aab --output=app\build\outputs\apk\release\app-release.apks --mode=universal --ks=..\android/app/my-release-key.jks --ks-pass=pass:12345678 --ks-key-alias=my-key-alias --key-pass=pass:12345678
+8. $ java -jar "C:\Program Files\bundletool-all-1.15.5.jar" extract-apks --apks=app\build\outputs\apk\release\app-release.apks --output-dir=app\build\outputs\apk\release\ --device-spec=..\android\universal.json

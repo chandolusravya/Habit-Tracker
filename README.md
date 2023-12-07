@@ -30,7 +30,7 @@ For this code to work, Install:
 6. Chocolatey
 7. VSCode (editor)
 
-Instructions to run code:
+Instructions to run the code:
 1. $ npx react-native@latest init app_name
 2. $ python ./reactnative-setup.py $ python somewhere/reactnative-setup.py  ( clone https://github.com/bjmckenz/rn-cli-fixup.git in your home directory before this step for reactnative-setup.py)
 ...Output: does things. leaves copy of messages in **reactnative-fixup.txt**

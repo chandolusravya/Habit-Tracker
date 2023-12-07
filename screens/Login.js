@@ -2,6 +2,7 @@ import { View, Text, Image, Pressable, TextInput, TouchableOpacity, Button } fro
 import React, { useState } from 'react'
 import CheckBox from '@react-native-community/checkbox';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+//import { useNavigation } from '@react-navigation/native';
 
 
 //import COLORS from '../constants/Colors';
@@ -10,6 +11,7 @@ import { Ionicons } from 'react-native-vector-icons';
 //import Button from '../components/Button';
 
 export default Login = ({ navigation }) => {
+    //const navigation = useNavigation();
     const [isPasswordShown, setIsPasswordShown] = useState(false);
     const [isChecked, setIsChecked] = useState(false);
     const [email, setEmail] = useState('');
@@ -24,9 +26,10 @@ export default Login = ({ navigation }) => {
             if (userDataString) {
             // User found, check the password
             const userData = JSON.parse(userDataString);
+            await AsyncStorage.setItem('user', JSON.stringify(userData));
             if (userData.password === password) {
               // Password is correct, navigate to the welcome screen or any other screen
-                navigation.navigate('HomeScreen');
+                navigation.navigate('Tabs');
             } else {
               // Incorrect password
                 alert('Incorrect password. Please try again.');

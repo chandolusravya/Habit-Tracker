@@ -118,7 +118,7 @@ export default Welcome = ({ navigation }) => {
                     <Text style={{
                         fontSize: 16,
                         color: COLORS.white,
-                    }}>set goals, motivate yourself, lead a healthy+happy life</Text>
+                    }}>set goals, motivate yourself, lead a healthy life</Text>
                 </View>
 
                 <Button

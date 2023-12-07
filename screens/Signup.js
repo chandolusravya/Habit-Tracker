@@ -16,6 +16,9 @@ export default Signup = ({ navigation }) => {
     const [mobileNumber, setMobileNumber] = useState('');
     const [password, setPassword] = useState('');
 
+    
+
+
     const handleSignUp = async () => {
         try{
             const userData = {
@@ -25,6 +28,14 @@ export default Signup = ({ navigation }) => {
                 password,
             };
             console.log('User Data:', userData);
+            await AsyncStorage.setItem('user', JSON.stringify(userData));
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                Alert.alert("Please enter a valid email address");
+                return;
+            }
+
+
             if(name.length==0|| email.length==0||mobileNumber.length==0||password.length==0){
                 Alert.alert("Please fill in all fields");
                 return;
@@ -34,6 +45,11 @@ export default Signup = ({ navigation }) => {
                 Alert.alert("Please agree to the terms and conditions");
                 return; // Exit the function if checkbox is not checked
             }
+            const existingUserDataString = await AsyncStorage.getItem(email);
+            if (existingUserDataString) {
+                Alert.alert('User with this email already exists. Please use a different email.');
+                return;
+            } 
             //to save the data
             // const userData = {
             //     name,
